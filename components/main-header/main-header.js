@@ -3,8 +3,11 @@ import Image from "next/image";
 import AppLogo from "@/assets/logo.png";
 import styleClasses from "./main-header.module.css";
 import MainHeaderBackround from "./main-header-background";
+import NavLinks from "./NavLinks";
 
 function MainHeader() {
+  const routes = { meals: "/meals", community: "/community" };
+
   return (
     <>
       <MainHeaderBackround />
@@ -17,11 +20,11 @@ function MainHeader() {
         <nav className={styleClasses.nav}>
           <ul>
             <li>
-              <Link href="/meals">Browse Meals</Link>
+              <NavLinks href={routes.meals}>Browse Meals</NavLinks>
             </li>
 
             <li>
-              <Link href="/community">Foodies Community</Link>
+              <NavLinks href={routes.community}>Foodies Community</NavLinks>
             </li>
           </ul>
         </nav>
