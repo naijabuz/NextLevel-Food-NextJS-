@@ -40,3 +40,9 @@ body {
   font-weight: 500;
   color: #ddd8d8;
 }
+
+.not-found a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #ddd8d8;
+}
