@@ -1,22 +1,35 @@
 import Image from "next/image";
 import styleClasses from "./page.module.css";
+import { getMeal } from "@/lib/meals";
+import { notFound } from "next/navigation";
 
-const MealsDetailsPage = () => {
+const MealsDetailsPage = ({ params }) => {
+  const slug = params.url;
+  const meal = getMeal(slug);
+
+  if (!meal) {
+    notFound();
+  }
+
+  const { title, image, summary, creator, creator_email } = meal;
+
+  const instructions = meal.instructions.replace(/\n/g, "<br />");
+
   return (
     <>
       <header className={styleClasses.header}>
         <div className={styleClasses.image}>
-          <Image fill />
+          <Image src={image} fill />
         </div>
 
         <div className={styleClasses.headerText}>
-          <h1>TITLE</h1>
+          <h1>{title}</h1>
 
           <p className={styleClasses.creator}>
-            by <a href={`mailto:${"EMAIL"}`}>NAME</a>
+            by <a href={`mailto:${creator_email}`}>{creator}</a>
           </p>
 
-          <p className={styleClasses.summary}>SUMMARY</p>
+          <p className={styleClasses.summary}>{summary}</p>
         </div>
       </header>
 
@@ -24,7 +37,7 @@ const MealsDetailsPage = () => {
         <p
           className={styleClasses.instructions}
           dangerouslySetInnerHTML={{
-            __html: "...",
+            __html: instructions,
           }}
         ></p>
       </main>

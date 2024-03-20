@@ -46,3 +46,17 @@ body {
   font-weight: bold;
   color: #ddd8d8;
 }
+
+::-webkit-scrollbar-track {
+  background: #ffc905; /* for chrome & safari */
+  scrollbar-color: #ffc905; /* fro Firefox */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f9572a; /* for chrome & safari */
+  scrollbar-color: #f9572a; /* fro Firefox */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #202020;
+}
