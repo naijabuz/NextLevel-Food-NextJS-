@@ -3,6 +3,19 @@ import styleClasses from "./page.module.css";
 import { getMeal } from "@/lib/meals";
 import { notFound } from "next/navigation";
 
+export async function generateMetadata({ params }) {
+  const meal = getMeal(params.url);
+
+  if (!meal) {
+    notFound();
+  }
+
+  return {
+    title: meal.title,
+    description: meal.summary,
+  };
+}
+
 const MealsDetailsPage = ({ params }) => {
   const slug = params.url;
   const meal = getMeal(slug);
